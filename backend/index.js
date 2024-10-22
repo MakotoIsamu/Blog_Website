@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const BlogRoutes = require('./routes/BlogRoutes')
+const AuthRoutes = require('./routes/AuthRoutes')
 const cors = require('cors')
 
 const app = express() 
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
 })
 
 app.use('/api/blog' , BlogRoutes)
+app.use('/api/auth' , AuthRoutes)
 
 const PORT = process.env.PORT || 5000
 

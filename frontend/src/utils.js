@@ -1,1 +1,1 @@
-export const Backend_Url = 'http://localhost:5000'
+export const Backend_Url = 'https://blog-website-backend-lzrx.onrender.com'
