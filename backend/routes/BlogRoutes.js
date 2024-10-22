@@ -57,11 +57,11 @@ router.post('/create', upload.single('image'), async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { image, title, description, author, category } = req.body;
+        const { title, description, author, category } = req.body;
         
         const updatedBlog = await Blog.findByIdAndUpdate(
             id,
-            { image, title, description, author, category },
+            { title, description, author, category },
             { new: true } // Returns the updated document
         );
         
