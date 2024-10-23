@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const BlogRoutes = require('./routes/BlogRoutes')
 const AuthRoutes = require('./routes/AuthRoutes')
 const cors = require('cors')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
 const app = express() 
 
@@ -14,6 +16,12 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
+}))
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
