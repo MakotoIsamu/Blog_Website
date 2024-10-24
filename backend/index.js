@@ -31,6 +31,10 @@ mongoose.connect(process.env.MONGO_URI)
     console.log(err)
 })
 
+app.get('/', (req, res) => {
+    res.send('API is running')
+})
+
 app.use('/api/blog' , BlogRoutes)
 app.use('/api/auth' , AuthRoutes)
 
