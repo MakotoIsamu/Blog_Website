@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { Backend_Url } from '../utils';
 import { toast , ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate()
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -20,6 +21,7 @@ const LoginPage = () => {
     const data = await response.json();
     if (data.message) {
       toast.success(data.message);
+      navigate('/')
     } else {
       toast.error('Something went wrong');
     }
